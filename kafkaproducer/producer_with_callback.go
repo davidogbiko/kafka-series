@@ -1,4 +1,4 @@
-package main
+package kafkaproducer
 
 import (
 	"log"
@@ -7,7 +7,7 @@ import (
 	"gopkg.in/confluentinc/confluent-kafka-go.v1/kafka"
 )
 
-func producerWithKeys() {
+func ProducerWithCallback() {
 	producer, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": "localhost"})
 	if err != nil {
 		panic(err)
@@ -16,15 +16,12 @@ func producerWithKeys() {
 	defer producer.Close()
 
 	topic := "first_topic"
-	value := "hello world"
-	key := "id_"
 	for i := 1; i <= 10; i++ {
 		producer.Produce(&kafka.Message{
 			TopicPartition: kafka.TopicPartition{
 				Topic:     &topic,
 				Partition: kafka.PartitionAny},
-			Value: []byte(value + " " + strconv.Itoa(i)),
-			Key:   []byte(key + strconv.Itoa(i)),
+			Value: []byte("hello world" + " " + strconv.Itoa(i)),
 		}, nil)
 	}
 
@@ -37,7 +34,6 @@ func producerWithKeys() {
 					log.Fatal("error while producing", ev.TopicPartition.Error)
 				} else {
 					log.Print("received new metadata. \n",
-						"Key: ", string(ev.Key), "\n",
 						"Topic: ", *ev.TopicPartition.Topic, "\n",
 						"Partition: ", ev.TopicPartition.Partition, "\n",
 						"Offset: ", ev.TopicPartition.Offset, "\n",

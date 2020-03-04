@@ -1,12 +1,14 @@
 package main
 
+import "github.com/davidogbiko/kafka-series/kafkaproducer"
+
 func main() {
 	// Producer example
-	producer()
+	kafkaproducer.Producer()
 
 	// Producer with callback example
-	producerWithCallback()
+	kafkaproducer.ProducerWithCallback()
 
 	// Producer with keys
-	producerWithKeys()
+	kafkaproducer.ProducerWithKeys()
 }

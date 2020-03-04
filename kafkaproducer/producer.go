@@ -1,4 +1,4 @@
-package main
+package kafkaproducer
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"gopkg.in/confluentinc/confluent-kafka-go.v1/kafka"
 )
 
-func producer() {
+func Producer() {
 	producer, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": "localhost"})
 	if err != nil {
 		panic(err)
