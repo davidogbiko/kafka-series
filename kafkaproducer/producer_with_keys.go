@@ -7,6 +7,8 @@ import (
 	"gopkg.in/confluentinc/confluent-kafka-go.v1/kafka"
 )
 
+// ProducerWithKeys uses the specified key to ensure a
+// specific partition is used for messages having the same key
 func ProducerWithKeys() {
 	producer, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": "localhost"})
 	if err != nil {

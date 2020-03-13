@@ -6,6 +6,7 @@ import (
 	"gopkg.in/confluentinc/confluent-kafka-go.v1/kafka"
 )
 
+// Producer is a base case kafka producer that publishes data to topics
 func Producer() {
 	producer, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": "localhost"})
 	if err != nil {

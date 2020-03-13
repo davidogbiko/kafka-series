@@ -12,7 +12,6 @@ This project contains Golang implementation of Stephane Maarek's code example fo
 - Golang Consumer with Threads
 - Golang Consumer Seek and Assign
 - Client Bi-Directional Compatibility
-- Configuring Producers and Consumers
 
 This project makes heavy use of Confluent's Golang kafka client.
 

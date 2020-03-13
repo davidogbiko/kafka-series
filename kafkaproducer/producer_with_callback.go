@@ -7,6 +7,7 @@ import (
 	"gopkg.in/confluentinc/confluent-kafka-go.v1/kafka"
 )
 
+// ProducerWithCallback polls the Event channel to get message metadata
 func ProducerWithCallback() {
 	producer, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": "localhost"})
 	if err != nil {
