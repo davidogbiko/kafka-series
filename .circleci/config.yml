@@ -6,10 +6,10 @@ jobs:
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
-      - run: git clone https://github.com/edenhill/librdkafka.git
-      - run: cd librdkafka
-      - run: ./configure --prefix /usr
-      - run: make
-      - run: sudo make install
+      - run: git clone https://github.com/Microsoft/vcpkg.git
+      - run: cd vcpkg
+      - run: ./bootstrap-vcpkg.sh
+      - run: ./vcpkg integrate install
+      - run: vcpkg install librdkafka
       - run: go get -v -t -d ./...
       - run: go test -v ./...
