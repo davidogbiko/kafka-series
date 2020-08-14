@@ -8,6 +8,7 @@ jobs:
       - checkout
       - run: git clone https://github.com/Microsoft/vcpkg.git
       - run: cd vcpkg
+      - run: pwd
       - run: ./bootstrap-vcpkg.sh
       - run: ./vcpkg integrate install
       - run: vcpkg install librdkafka
